@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "864305891034",
+    "project_id": "sharelocal-loc",
+    "storage_bucket": "sharelocal-loc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864305891034:android:b5ee8dd8b6eb69322207e3",
+        "android_client_info": {
+          "package_name": "com.example.sharelocal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864305891034-v5ogtf3n7voe0krcufo9qc2g8oorhk3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKazqAs14RrTN4e8XilVsCkUAvzzM1B0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864305891034-v5ogtf3n7voe0krcufo9qc2g8oorhk3p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "864305891034-c6kvbhq1k8jcm9k6kfc479rk4dioqdul.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sharelocal"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
