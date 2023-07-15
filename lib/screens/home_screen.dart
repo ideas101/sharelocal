@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sharelocal/provider/auth_provider.dart';
-import 'package:sharelocal/screens/welcome_screen.dart';
+import 'package:sharelocal/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,28 +16,30 @@ class _HomeScreenState extends State<HomeScreen> {
     final ap = Provider.of<AuthProvider>(context, listen: false);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(_createRoute());
+        },
+        tooltip: "post",
+        child: const Icon(Icons.add),
+      ),
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey.shade800,
+        centerTitle: false,
         title: const Text(
-          "Share Local",
-          style: TextStyle(color: Colors.white),
+          "Sharelocal",
+          style: TextStyle(color: Colors.black),
+          textAlign: TextAlign.left,
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              ap.userSignOut().then(
-                    (value) => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const WelcomeScreen(),
-                      ),
-                    ),
-                  );
-            },
-            icon: const Icon(
-              Icons.exit_to_app,
-              color: Colors.white,
+            icon: CircleAvatar(
+              backgroundImage: NetworkImage(ap.userModel.profilePic),
+              radius: 16,
             ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const ProfileScreen()));
+            },
           ),
         ],
       ),
@@ -58,6 +60,50 @@ class _HomeScreenState extends State<HomeScreen> {
           Text(ap.userModel.bio),
         ],
       )),
+    );
+  }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const Page2(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
+
+class Page2 extends StatelessWidget {
+  const Page2({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // shadowColor: Colors.black,
+        // elevation: 4,
+        leading: GestureDetector(
+          child: const Icon(
+            Icons.close,
+            color: Colors.black,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+      body: const Center(
+        child: Text('Page 2'),
+      ),
     );
   }
 }
