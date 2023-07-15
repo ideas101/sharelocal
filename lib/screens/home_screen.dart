@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sharelocal/provider/auth_provider.dart';
+import 'package:sharelocal/screens/post_screen.dart';
 import 'package:sharelocal/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const Page2(),
+    pageBuilder: (context, animation, secondaryAnimation) => const PostScreen(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;
@@ -80,30 +81,4 @@ Route _createRoute() {
       );
     },
   );
-}
-
-class Page2 extends StatelessWidget {
-  const Page2({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // shadowColor: Colors.black,
-        // elevation: 4,
-        leading: GestureDetector(
-          child: const Icon(
-            Icons.close,
-            color: Colors.black,
-          ),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: const Center(
-        child: Text('Page 2'),
-      ),
-    );
-  }
 }
